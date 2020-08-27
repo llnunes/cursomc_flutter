@@ -1,4 +1,5 @@
-import 'package:cursomc/pages/produtos/produto_page.dart';
+import 'package:cursomc/pages/categorias/categoria_home_page.dart';
+import 'package:cursomc/pages/produtos/produto_home_page.dart';
 import 'package:cursomc/util/prefs.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin<HomePage> {
   TabController _tabController;
 
   @override
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
     // Depois cria o TabController
     // No método build na primeira vez ele poderá estar nulo
-    _tabController = TabController(length: 4); //, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
 
     // Agora que temos o TabController e o índice da tab,
     // chama o setState para redesenhar a tela
@@ -40,30 +42,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Carros"),
+        title: Text("Sistema de Pedidos"),
         bottom: _tabController == null
             ? null
             : TabBar(
-          controller: _tabController,
-          tabs: <Widget>[
-            Tab(
-              text: "Classicos",
-              icon: Icon(Icons.directions_car),
-            ),
-            Tab(
-              text: "Esportivos",
-              icon: Icon(Icons.directions_car),
-            ),
-            Tab(
-              text: "Luxo",
-              icon: Icon(Icons.directions_car),
-            ),
-            Tab(
-              text: "Favoritos",
-              icon: Icon(Icons.favorite),
-            ),
-          ],
-        ),
+                controller: _tabController,
+                tabs: <Widget>[
+                  Tab(
+                    text: "Categorias",
+                    icon: Icon(Icons.category),
+                  ),
+                  Tab(
+                    text: "Produtos",
+                    icon: Icon(Icons.shop),
+                  ),
+                ],
+              ),
       ),
       body: _tabController == null
           ? Center(
@@ -71,7 +65,8 @@ class _HomePageState extends State<HomePage> {
         //child: CircularProgressIndicator(),
       )
           : TabBarView(controller: _tabController, children: <Widget>[
-        ProdutosPage(),
+        CategoriaHomePage(),
+        ProdutoHomePage(),
       ]),
       //drawer: DrawerList(),
       floatingActionButton: FloatingActionButton(

@@ -1,9 +1,9 @@
 import 'package:cursomc/model/cliente.dart';
 import 'package:cursomc/pages/home_page.dart';
 import 'package:cursomc/pages/login_page.dart';
-import 'package:cursomc/util/sql/db_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:cursomc/sql/db_helper.dart';
 import 'package:cursomc/util/nav.dart';
+import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -41,6 +41,5 @@ class _SplashPageState extends State<SplashPage> {
         child: CircularProgressIndicator(),
       ),
     );
-    ;
   }
 }

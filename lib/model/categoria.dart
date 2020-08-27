@@ -3,29 +3,27 @@ import 'dart:convert' as convert;
 import 'package:cursomc/sql/entity.dart';
 import 'package:cursomc/util/event_bus.dart';
 
-class ProdutoEvent extends Event {
+class CategoriaEvent extends Event {
   String acao;
   String tipo;
 
-  ProdutoEvent(this.acao, this.tipo);
+  CategoriaEvent(this.acao, this.tipo);
 
   @override
   String toString() {
-    return 'ProdutoEvent{acao: $acao, tipo: $tipo}';
+    return 'CategoriaEvent{acao: $acao, tipo: $tipo}';
   }
 }
 
-class Produto extends Entity {
+class Categoria extends Entity {
   int id;
   String nome;
-  String preco;
 
-  Produto({this.id, this.nome, this.preco});
+  Categoria({this.id, this.nome});
 
-  Produto.fromMap(Map<String, dynamic> map) {
+  Categoria.fromMap(Map<String, dynamic> map) {
     id = map['id'];
     nome = map['nome'];
-    preco = map['preco'];
   }
 
   @override
@@ -33,7 +31,6 @@ class Produto extends Entity {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['nome'] = this.nome;
-    data['preco'] = this.preco;
     return data;
   }
 

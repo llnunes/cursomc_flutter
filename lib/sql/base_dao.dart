@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:cursomc/util/sql/db_helper.dart';
-import 'package:cursomc/util/sql/entity.dart';
+import 'package:cursomc/sql/db_helper.dart';
+import 'package:cursomc/sql/entity.dart';
 import 'package:sqflite/sqflite.dart';
 
 // Data Access Object
 abstract class BaseDAO<T extends Entity> {
-
   Future<Database> get db => DatabaseHelper.getInstance().db;
 
   String get tableName;

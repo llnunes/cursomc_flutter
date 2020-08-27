@@ -24,11 +24,12 @@ class DatabaseHelper {
   Future _initDb() async {
     String databasesPath = await getDatabasesPath();
     print("databse: $databasesPath");
-    String path = join(databasesPath, 'cursomc.db');
+    String path = join(databasesPath, 'cursomc1.db');
 
     print("db $path");
 
-    var db = await openDatabase(path, version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
+    var db = await openDatabase(path,
+        version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
     return db;
   }
 
